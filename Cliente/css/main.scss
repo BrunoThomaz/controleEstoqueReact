@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-color: rgb(240, 241, 243);
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 4em;
+        width: 100vw;
+        background-color: rgb(255,255,255);
+
+        a {
+            font-family: "Ubuntu", sans-serif;
+            font-weight: 400;
+            margin: 0.4em;
+            padding: 0.4em;
+            text-decoration: none;
+            background-color: rgba(0,0,0,0);
+            transition: all 400ms ease-in-out;
+            border-radius: 4px;
+        }
+        a:hover {
+            background-color: rgba(19, 102, 217, 1);
+            color: rgb(255,255,255);
+        }
+        a:active {
+            background-color: rgba(19, 102, 217, 0.5);
+        }
+    }
+}
