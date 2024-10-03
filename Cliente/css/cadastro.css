@@ -8,36 +8,4 @@ body h1 {
   color: rgb(56, 62, 73);
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
-}
-body form {
-  min-width: 40vw;
-  font-family: "Ubuntu", sans-serif;
-  background-color: rgb(255, 255, 255);
-  border-radius: 0.4em;
-  padding: 0.8em;
-}
-body form h2 {
-  color: rgb(56, 62, 73);
-  font-weight: 400;
-  align-self: center;
-  padding: 0.4em;
-}
-body form fieldset {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  border: none;
-  margin: 0.2em;
-}
-body form fieldset label {
-  width: 100%;
-}
-body form fieldset input {
-  padding: 0.8em;
-  border: 1px;
-  border-color: rgb(240, 241, 243);
-  border-radius: 0.4em;
-}
-body form fieldset input:focus {
-  background-color: rgb(240, 241, 243);
 }/*# sourceMappingURL=cadastro.css.map */

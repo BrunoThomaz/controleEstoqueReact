@@ -6,15 +6,42 @@
 body {
   background-color: rgb(240, 241, 243);
 }
-body nav {
+body .content {
   display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+body .content .left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+}
+body .content .left-side h1 {
+  margin: 1em;
+}
+body .content .left-side h2 {
+  margin: 0.4em;
+}
+body .content .right-side {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 4em;
-  width: 100vw;
+  width: 50vw;
+  height: 100vh;
   background-color: rgb(255, 255, 255);
 }
-body nav a {
+body .content .right-side nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 50%;
+}
+body .content .right-side nav a {
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
   margin: 0.4em;
@@ -24,10 +51,73 @@ body nav a {
   transition: all 400ms ease-in-out;
   border-radius: 4px;
 }
-body nav a:hover {
+body .content .right-side nav a:hover {
   background-color: rgb(19, 102, 217);
   color: rgb(255, 255, 255);
 }
-body nav a:active {
+body .content .right-side nav a:active {
   background-color: rgba(19, 102, 217, 0.5);
+}
+body form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40vw;
+  font-family: "Ubuntu", sans-serif;
+  background-color: rgb(255, 255, 255);
+  border-radius: 0.4em;
+  padding: 0.8em;
+}
+body form h2 {
+  color: rgb(56, 62, 73);
+  font-weight: 400;
+  text-align: center;
+  padding: 0.4em;
+}
+body form fieldset {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  margin: 0.2em;
+}
+body form fieldset label {
+  width: 100%;
+}
+body form fieldset input {
+  padding: 0.8em;
+  border-width: 1px;
+  border-color: rgb(89, 90, 93);
+  border-radius: 0.4em;
+  margin: 0.4em;
+}
+body form fieldset input:focus {
+  background-color: rgb(240, 241, 243);
+  outline: none;
+}
+body form button, body form a {
+  padding: 2em;
+  background-color: rgb(19, 102, 217);
+  color: rgb(255, 255, 255);
+  margin: 0.4em;
+  border: none;
+  border-radius: 1em;
+  font-family: "Ubuntu", sans-serif;
+  font-size: medium;
+  font-weight: 200;
+  cursor: pointer;
+  text-decoration: none;
+}
+body form .row {
+  display: flex;
+}
+body .modal {
+  display: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  top: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255);
 }/*# sourceMappingURL=main.css.map */

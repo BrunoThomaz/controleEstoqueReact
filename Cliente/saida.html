@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Controle de Estoque - Saída de Produto</title>
+    <script src="./html5-qrcode/html5-qrcode.min.js"></script>
+</head>
+<body>
+    
+    <h1>Estoque</h1>
+    <form action="/saida" method="post">
+        <h2>Saída de Produto</h2>
+        <fieldset>
+            <label for="codigo">Código</label>
+            <input type="text" name="codigo" id="codigo">
+            <a href="#" onclick="escanearQR()">Usar Câmera</a>
+        </fieldset>
+        <fieldset class="produto">
+        </fieldset>
+        <fieldset>
+            <label for="quantidade">Quantidade</label>
+            <input type="text" name="quantidade" id="quantidade">
+        </fieldset>
+        <fieldset>
+            <label for="localizacao">Localização</label>
+            <input type="text" name="localizacao" id="localizacao">
+        </fieldset>
+        <div class="row">
+            <button type="submit">Enviar</button>
+            <a href="/">Voltar</a>
+        </div>
+    </form>
+    <div class="modal">
+        <div id="reader"></div>
+    </div>
+    <div class="historico"></div>
+    <script>
+        function escanearQR() {
+            console.log('escanearQR');
+            const modal = document.querySelector('.modal');
+            modal.style.display = 'block';
+            const scanner = new Html5QrcodeScanner('reader',{
+                qrbox: {
+                    width: 250,
+                    height: 250,
+                },
+                fps: 20,
+            });
+            scanner.render(
+                (result)=>{
+                    const codigo = document.getElementById('codigo');
+                    codigo.value = result;
+                    codigo.dispatchEvent(new Event('change'));
+                    scanner.clear();
+                    modal.style.display = 'none';
+                }, 
+                
+                (error)=>{
+                    console.log(error);
+                })
+            
+        }
+        const codigo = document.getElementById('codigo');
+        codigo.addEventListener('change', pesquisaCodigo);
+        async function pesquisaCodigo() {
+            valorCodigo = codigo.value;
+            fetch(`/pesquisa/${valorCodigo}`)
+            .then((result) => result.json())
+            .then((json) => {
+                document.getElementById('codigo').value = json.codigo;
+                document.getElementById('localizacao').value = json.localizacao;
+                document.getElementById('quantidade').value = json.quantidade;
+                const produto = document.querySelector('.produto')
+                produto.innerHTML = `<h3>${json.produto}</h3></br>
+                                     <h4>Utilizado em: ${json.equipamento}</h4>
+                                     <h4>Custo: ${json.valorUnitario}</h4>
+                                     <h4>Descrição: ${json.descricao}</h4>
+                                     <h4>Estoque Mínimo: ${json.estoqueMinimo}</h4>`
+            })
+        }
+
+        const response =  new URLSearchParams(window.location.search).get('response');
+        if (response != undefined) {
+            alert(response);
+        }
+        async function buscarHistorico() {
+            fetch(`/saida`)
+            .then((result) => result.json())
+            .then((historico) => {
+                const divHistorico = document.querySelector('.historico')
+                divHistorico.innerHTML = `<h2>Histórico de saídas</h2>`
+                for (item of historico) {
+                    divHistorico.innerHTML += `Data: ${item.data}  Usuário: ${item.usuario}  Produto: ${item.produto} Quantidade: ${item.quantidade}</br></br>`
+                }
+            })
+        }
+        buscarHistorico()
+    </script>
+</body>
+</html>
