@@ -14,6 +14,12 @@ router.post('/cadastro', async (req, res) => {
     const itemCadastrado = await Produto.findOneAndUpdate({codigo:req.body.codigo},itemCadastro,{new:true, upsert: true})
     res.redirect(`/entrada.html?response="Estoque atualizado com sucesso. Código: ${itemCadastro.codigo}"`)
 })
+router.post('/cadastro-local', async (req, res) => {
+    return console.log(req.body)
+    const itemCadastro = req.body
+    const itemCadastrado = await Local.findOneAndUpdate({codigo:req.body.codigo},itemCadastro,{new:true, upsert: true})
+    res.redirect(`/entrada.html?response="Estoque atualizado com sucesso. Código: ${itemCadastro.codigo}"`)
+})
 router.post('/saida', async (req, res) => {
     console.log(req.body)
     const itemCadastro = req.body

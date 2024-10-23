@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <title>Controle de Estoque - Cadastro Locais</title>
+    <script src="./html5-qrcode/html5-qrcode.min.js"></script>
+</head>
+<body>
+    
+    <h1>Locais</h1>
+    <form action="/cadastro-local" method="post">
+        <h2>Cadastro de Locais</h2>
+        <fieldset>
+            <label for="codigo">Código</label>
+            <input type="text" name="codigo" id="codigo">
+            <a href="#" onclick="escanearQR()">Usar Câmera</a>
+        </fieldset>
+        <fieldset>
+            <label for="setor">Setor</label>
+            <select name="setor" id="setor">
+                <option value="">Adicione</option>
+            </select>
+            <a href="#">Adicionar</a>
+        </fieldset>
+        <fieldset>
+            <label for="armario">Armário</label>
+            <select name="armario" id="armario">
+                <option value="true">Adicione</option>
+            </select>
+            <a href="#">Adicionar</a>
+        </fieldset>
+        <fieldset>
+            <label for="prateleira">Prateleira</label>
+            <select name="prateleira" id="prateleira">
+                <option value="true">Adicione</option>
+            </select>
+            <a href="#">Adicionar</a>
+        </fieldset>
+        <fieldset>
+            <label for="caixa">Caixa</label>
+            <input type="text" name="caixa" list="caixa">
+            <datalist id="caixa">
+                <option value="Adicione"></option>
+            </datalist>
+            <a href="#">Adicionar</a>
+        </fieldset>
+        <fieldset>
+            <label for="capacidade">Capacidade</label>
+            <input type="number" name="capacidade" id="capacidade">
+        </fieldset>
+        <div class="row">
+            <button type="submit">Enviar</button>
+            <a href="/">Voltar</a>
+        </div>
+    </form>
+    <div class="modal">
+        <div id="reader"></div>
+    </div>
+    <script>
+        function escanearQR() {
+            console.log('escanearQR');
+            const modal = document.querySelector('.modal');
+            modal.style.display = 'block';
+            const scanner = new Html5QrcodeScanner('reader',{
+                qrbox: {
+                    width: 250,
+                    height: 250,
+                },
+                fps: 20,
+            });
+            scanner.render(
+                (result)=>{
+                    const codigo = document.getElementById('codigo');
+                    codigo.value = result;
+                    codigo.dispatchEvent(new Event('change'));
+                    scanner.clear();
+                    modal.style.display = 'none';
+                }, 
+                
+                (error)=>{
+                    console.log(error);
+                })
+            
+        }
+        const codigo = document.getElementById('codigo');
+        codigo.addEventListener('change', pesquisaCodigo);
+        async function pesquisaCodigo() {
+            valorCodigo = codigo.value;
+            fetch(`/pesquisa/${valorCodigo}`)
+            .then((result) => result.json())
+            .then((json) => {
+                document.getElementById('codigo').value = json.codigo;
+                document.getElementById('produto').value = json.produto;
+                document.getElementById('quantidade').value = json.quantidade;
+                document.getElementById('equipamento').value = json.equipamento;
+                document.getElementById('valorUnitario').value = json.valorUnitario;
+                document.getElementById('descricao').value = json.descricao;
+                document.getElementById('localizacao').value = json.localizacao;
+                document.getElementById('estoqueMinimo').value = json.estoqueMinimo;
+            })
+        }
+
+        const response =  new URLSearchParams(window.location.search).get('response');
+        if (response != undefined) {
+            alert(response);
+        }
+    </script>
+</body>
+</html>
