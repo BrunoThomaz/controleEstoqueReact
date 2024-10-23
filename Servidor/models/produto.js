@@ -17,7 +17,7 @@ const produtoSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
-    valorUnitario: {
+    valorMedio: {
         type: String,
         required: false,
     },
@@ -35,8 +35,6 @@ const produtoSchema = new mongoose.Schema({
     }
 });
 
-
 const Produto = mongoose.model('produto', produtoSchema);
-
 
 module.exports = {Produto, produtoSchema};

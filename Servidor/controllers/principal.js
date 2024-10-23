@@ -1,12 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const { Produto } = require('../models/produto')
-const { Saida } = require('../models/saida')
+const { Saida } = require('../models/movimentacao')
 const QRCode = require('qrcode')
 
-router.get('/', (req, res) => {
-    res.send('Tudo certim.')
-})
+//Main route to index page is performed in server.js by static folder "Cliente"
+//TO DO: refactoring app screens with React
 
 router.post('/cadastro', async (req, res) => {
     console.log(req.body)
@@ -16,9 +15,7 @@ router.post('/cadastro', async (req, res) => {
 })
 router.post('/cadastro-local', async (req, res) => {
     return console.log(req.body)
-    const itemCadastro = req.body
-    const itemCadastrado = await Local.findOneAndUpdate({codigo:req.body.codigo},itemCadastro,{new:true, upsert: true})
-    res.redirect(`/entrada.html?response="Estoque atualizado com sucesso. Código: ${itemCadastro.codigo}"`)
+   
 })
 router.post('/saida', async (req, res) => {
     console.log(req.body)

@@ -3,24 +3,28 @@ const mongoose = require('mongoose');
 const saidaSchema = new mongoose.Schema({
     codigo: {
         type: String,
-        required: true,
+        required: true
     },
     produto: {
         type: String,
-        required: true,
+        required: true
     },
     quantidade: {
         type: String,
-        required: false,
+        required: false
     },
     usuario: {
         type: String,
-        required: false,
+        required: false
     },
     data: {
         type: Date,
         default: new Date(),
-        required: false,
+        required: false
+    },
+    tipo: {
+        type: String,
+        required: true
     }
 });
 

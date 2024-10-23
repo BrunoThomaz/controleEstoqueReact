@@ -1,4 +1,4 @@
-const mongoose = require('./db')
+const mongoose = require('../Servidor/db')
 const { Produto } = require('../Servidor/models/produto')
 
 var fs = require('fs');

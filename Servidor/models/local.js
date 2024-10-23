@@ -1,5 +1,7 @@
+//Model to local storage of spare parts
 const mongoose = require('mongoose');
 
+//Menor parte do inventário, onde os sobressalentes são guardados
 const caixaSchema = new mongoose.Schema({
     codigo: {
         type: String,
@@ -17,6 +19,7 @@ const caixaSchema = new mongoose.Schema({
 });
 const Caixa = mongoose.model('caixa', caixaSchema);
 
+//Prateleiras onde são armazenadas as caixas
 const prateleiraSchema = new mongoose.Schema({
     codigo: {
         type: String,
@@ -34,6 +37,7 @@ const prateleiraSchema = new mongoose.Schema({
 });
 const Prateleira = mongoose.model('prateleira', prateleiraSchema);
 
+//Conjunto de Prateleiras
 const armarioSchema = new mongoose.Schema({
     codigo: {
         type: String,
@@ -51,6 +55,7 @@ const armarioSchema = new mongoose.Schema({
 });
 const Armario = mongoose.model('armario', armarioSchema);
 
+//Sala onde estão os armários
 const localSchema = new mongoose.Schema({
     codigo: {
         type: String,
