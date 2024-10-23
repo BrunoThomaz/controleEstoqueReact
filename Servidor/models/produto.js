@@ -10,7 +10,7 @@ const produtoSchema = new mongoose.Schema({
         required: true,
     },
     quantidade: {
-        type: String,
+        type: Number,
         required: false,
     },
     equipamento: {
@@ -18,7 +18,7 @@ const produtoSchema = new mongoose.Schema({
         required: false,
     },
     valorMedio: {
-        type: String,
+        type: Number,
         required: false,
     },
     descricao: {
@@ -30,7 +30,7 @@ const produtoSchema = new mongoose.Schema({
         required: false,
     },
     estoqueMinimo: {
-        type: String,
+        type: Number,
         required: false,
     }
 });

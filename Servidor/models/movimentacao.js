@@ -1,21 +1,17 @@
 const mongoose = require('mongoose');
 
-const saidaSchema = new mongoose.Schema({
+const movimentacaoSchema = new mongoose.Schema({
     codigo: {
         type: String,
         required: true
     },
-    produto: {
-        type: String,
-        required: true
-    },
     quantidade: {
-        type: String,
-        required: false
+        type: Number,
+        required: true
     },
     usuario: {
         type: String,
-        required: false
+        required: true
     },
     data: {
         type: Date,
@@ -25,11 +21,15 @@ const saidaSchema = new mongoose.Schema({
     tipo: {
         type: String,
         required: true
+    },
+    valorUnitario: {
+        type: Number,
+        required: true
     }
 });
 
 
-const Saida = mongoose.model('saida', saidaSchema);
+const Movimentacao = mongoose.model('movimentacao', movimentacaoSchema);
 
 
-module.exports = {Saida, saidaSchema};
+module.exports = {Movimentacao, movimentacaoSchema};

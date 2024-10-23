@@ -11,11 +11,12 @@
     <title>Controle de Estoque - Atualização</title>
     <script src="./html5-qrcode/html5-qrcode.min.js"></script>
     <script src="./js/main.js" defer></script>
+    <script src="./js/atualizaEstoque.js" defer></script>
 </head>
 <body>
     
     <h1>Estoque</h1>
-    <form action="/cadastro" method="post">
+    <form action="/atualizaEstoque" method="post">
         <h2>Atualização de Estoque</h2>
         <fieldset>
             <label for="codigo">Código</label>
@@ -24,31 +25,31 @@
         </fieldset>
         <fieldset>
             <label for="produto">Produto</label>
-            <input type="text" name="produto" id="produto">
+            <input type="text" name="produto" id="produto" required>
         </fieldset>
         <fieldset>
-            <label for="valorUnitario">Valor Unitário</label>
-            <input type="text" name="valorUnitario" id="valorUnitario">
+            <label for="valorMedio">Valor Médio</label>
+            <input type="text" name="valorMedio" id="valorMedio" required>
         </fieldset>
         <fieldset>
             <label for="descricao">Descrição</label>
-            <input type="text" name="descricao" id="descricao">
+            <input type="text" name="descricao" id="descricao" required>
         </fieldset>
         <fieldset>
             <label for="quantidade">Quantidade</label>
-            <input type="text" name="quantidade" id="quantidade">
+            <input type="number" name="quantidade" id="quantidade" required>
         </fieldset>
         <fieldset>
             <label for="equipamento">Equipamento</label>
-            <input type="text" name="equipamento" id="equipamento">
+            <input type="text" name="equipamento" id="equipamento" required>
         </fieldset>
         <fieldset>
             <label for="localizacao">Localização</label>
-            <input type="text" name="localizacao" id="localizacao">
+            <input type="text" name="localizacao" id="localizacao" required>
         </fieldset>
         <fieldset>
             <label for="estoqueMinimo">Estoque mínimo</label>
-            <input type="text" name="estoqueMinimo" id="estoqueMinimo">
+            <input type="text" name="estoqueMinimo" id="estoqueMinimo" required>
         </fieldset>
         <div class="row">
             <button type="submit">Enviar</button>
