@@ -10,106 +10,92 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <title>Controle de Estoque - Cadastro Locais</title>
     <script src="./html5-qrcode/html5-qrcode.min.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/cadastroLocal.js" defer></script>
 </head>
 <body>
     
     <h1>Locais</h1>
-    <form action="/cadastro-local" method="post">
-        <h2>Cadastro de Locais</h2>
+    <nav>
+        <a href="#">Cadastrar Armário</a>
+        <a href="#select-armario">Cadastrar Prateleira</a>
+        <a href="#select-armario-caixa">Cadastrar Caixa</a>
+    </nav>
+    <form action="/cadastro-armario" method="post">
+        <h2>Cadastro de Armário</h2>
         <fieldset>
-            <label for="codigo">Código</label>
-            <input type="text" name="codigo" id="codigo">
-            <a href="#" onclick="escanearQR()">Usar Câmera</a>
+            <label for="armario">Nome</label>
+            <input type="text" name="armario" id="armario">
         </fieldset>
+
         <fieldset>
-            <label for="setor">Setor</label>
-            <select name="setor" id="setor">
-                <option value="">Adicione</option>
-            </select>
-            <a href="#">Adicionar</a>
-        </fieldset>
-        <fieldset>
-            <label for="armario">Armário</label>
-            <select name="armario" id="armario">
-                <option value="true">Adicione</option>
-            </select>
-            <a href="#">Adicionar</a>
-        </fieldset>
-        <fieldset>
-            <label for="prateleira">Prateleira</label>
-            <select name="prateleira" id="prateleira">
-                <option value="true">Adicione</option>
-            </select>
-            <a href="#">Adicionar</a>
-        </fieldset>
-        <fieldset>
-            <label for="caixa">Caixa</label>
-            <input type="text" name="caixa" list="caixa">
-            <datalist id="caixa">
-                <option value="Adicione"></option>
-            </datalist>
-            <a href="#">Adicionar</a>
-        </fieldset>
-        <fieldset>
-            <label for="capacidade">Capacidade</label>
-            <input type="number" name="capacidade" id="capacidade">
+            <label for="codigo-armario">Código</label>
+            <input type="text" name="codigo-armario" id="codigo-armario">
+            <div class="row">
+                <a href="#" onclick="gerarQRCode('armario')">Gerar QR Code</a>
+            </div>
         </fieldset>
         <div class="row">
-            <button type="submit">Enviar</button>
+            <button type="submit" onclick=salvarArmario(event)>Enviar</button>
+            <a href="/">Voltar</a>
+        </div>
+    </form>
+    <form action="/cadastro-prateleira" method="post">
+        <h2>Cadastro de Prateleira</h2>
+        <fieldset>
+            <select name="select-armario" id="select-armario">
+                <option value="#">Nenhum Armário Cadastrado</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="prateleira">Nome</label>
+            <input type="text" name="prateleira" id="prateleira">
+        </fieldset>
+
+        <fieldset>
+            <label for="codigo-prateleira">Código</label>
+            <input type="text" name="codigo-prateleira" id="codigo-prateleira">
+            <div class="row">
+                <a href="#" onclick="gerarQRCode('prateleira')">Gerar QR Code</a>
+            </div>
+        </fieldset>
+        <div class="row">
+            <button type="submit" onclick=salvarPrateleira(event)>Enviar</button>
+            <a href="/">Voltar</a>
+        </div>
+    </form>
+
+    <form action="/cadastro-caixa" method="post">
+        <h2>Cadastro de Caixa</h2>
+        <fieldset>
+            <select name="select-armario" id="select-armario-caixa" onchange=atualizaPrateleiras(event)>
+                <option value="#">Nenhum Armário Cadastrado</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <select name="select-prateleira" id="select-prateleira">
+                <option value="#">Nenhuma Prateleira Cadastrada</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="caixa">Nome</label>
+            <input type="text" name="caixa" id="caixa">
+        </fieldset>
+
+        <fieldset>
+            <label for="codigo-caixa">Código</label>
+            <input type="text" name="codigo-caixa" id="codigo-caixa">
+            <div class="row">
+                <a href="#" onclick="gerarQRCode('caixa')">Gerar QR Code</a>
+            </div>
+        </fieldset>
+        <div class="row">
+            <button type="submit" onclick=salvarCaixa(event)>Enviar</button>
             <a href="/">Voltar</a>
         </div>
     </form>
     <div class="modal">
         <div id="reader"></div>
     </div>
-    <script>
-        function escanearQR() {
-            console.log('escanearQR');
-            const modal = document.querySelector('.modal');
-            modal.style.display = 'block';
-            const scanner = new Html5QrcodeScanner('reader',{
-                qrbox: {
-                    width: 250,
-                    height: 250,
-                },
-                fps: 20,
-            });
-            scanner.render(
-                (result)=>{
-                    const codigo = document.getElementById('codigo');
-                    codigo.value = result;
-                    codigo.dispatchEvent(new Event('change'));
-                    scanner.clear();
-                    modal.style.display = 'none';
-                }, 
-                
-                (error)=>{
-                    console.log(error);
-                })
-            
-        }
-        const codigo = document.getElementById('codigo');
-        codigo.addEventListener('change', pesquisaCodigo);
-        async function pesquisaCodigo() {
-            valorCodigo = codigo.value;
-            fetch(`/pesquisa/${valorCodigo}`)
-            .then((result) => result.json())
-            .then((json) => {
-                document.getElementById('codigo').value = json.codigo;
-                document.getElementById('produto').value = json.produto;
-                document.getElementById('quantidade').value = json.quantidade;
-                document.getElementById('equipamento').value = json.equipamento;
-                document.getElementById('valorUnitario').value = json.valorUnitario;
-                document.getElementById('descricao').value = json.descricao;
-                document.getElementById('localizacao').value = json.localizacao;
-                document.getElementById('estoqueMinimo').value = json.estoqueMinimo;
-            })
-        }
-
-        const response =  new URLSearchParams(window.location.search).get('response');
-        if (response != undefined) {
-            alert(response);
-        }
-    </script>
 </body>
 </html>
