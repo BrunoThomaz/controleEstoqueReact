@@ -2,13 +2,16 @@ const express = require('express')
 const router = express.Router()
 const { Produto } = require('../models/produto')
 const { Movimentacao } = require('../models/movimentacao')
+const { Armario } = require('../models/armario')
+const { Prateleira } = require('../models/prateleira')
+const { Caixa } = require('../models/caixa')
+
 const QRCode = require('qrcode')
 
 //Main route to index page is performed in server.js by static folder "Cliente"
 //TO DO: refactoring app screens with React
 
 router.post('/cadastro-movimentacao', async (req, res) => {
-    console.log(req.body)
     const movimentacao = req.body
     try {
         movimentacao.quantidade = Number(movimentacao.quantidade)
@@ -26,6 +29,10 @@ router.post('/cadastro-movimentacao', async (req, res) => {
             //Atualiza Valor Médio
             valorMedioDepoisMovimentacao = ((valorMedioAntesMovimentacao * quantidadeAntesMovimentacao) + (movimentacao.quantidade * movimentacao.valorUnitario)) / quantidadeDepoisMovimentacao
             produtoEstoque.valorMedio = valorMedioDepoisMovimentacao
+
+            produtoEstoque.descricao = movimentacao.descricao
+            produtoEstoque.equipamento = movimentacao.equipamento
+            produtoEstoque.localizacao = movimentacao.localizacao
 
             const produtoAtualizado = await Produto.findOneAndUpdate({codigo: produtoEstoque.codigo}, produtoEstoque, {new:true, upsert: true})
             console.log(produtoAtualizado)
@@ -56,10 +63,78 @@ router.post('/atualizaEstoque', async (req, res) => {
         res.redirect(`/atualizacao.html?response="Erro Interno contate o administrador`)
     }
 })
-router.post('/cadastro-local', async (req, res) => {
-    return console.log(req.body)
-   
+router.post('/cadastro-armario', async (req, res) => {
+    console.log(req.body)
+    try {
+        const cadastroArmario = req.body
+        const novoArmario = await Armario.create(cadastroArmario)
+        res.send(novoArmario)
+    } catch (error) {
+        console.log(error)
+        res.send({message:error.message})
+
+    }
 })
+router.get('/busca-armarios', async (req, res) => {
+    const armarios = await Armario.find()
+    res.send(armarios)
+})
+
+router.post('/cadastro-prateleira', async (req, res) => {
+    try {
+        console.log(req.body)
+        const codigoArmario = req.body.codigoArmario
+        const cadastroPrateleira = {nome: req.body.nome, codigo: req.body.codigo}
+        const armario = await Armario.findOne({codigo:codigoArmario})
+        for (let prateleira of armario.prateleiras) {
+            if (prateleira.codigo == cadastroPrateleira.codigo) {
+                throw new Error('codigo ja utilizado!')
+            }
+            if (prateleira.nome == cadastroPrateleira.nome) {
+                throw new Error('nome ja utilizado!')
+            }
+        }
+        const novoPrateleira = await Prateleira.create(cadastroPrateleira)
+        armario.prateleiras.push(novoPrateleira)
+        const atualizacao = await Armario.findOneAndUpdate({codigo:codigoArmario},armario,{new:true})
+        res.send({atualizacao,novoPrateleira})
+    } catch (error) {
+        console.log(error)
+        res.send({message:error.message})
+    }
+})
+
+router.post('/cadastro-caixa', async (req, res) => {
+    try {
+        const { nome, codigo, codigoPrateleira, codigoArmario } = req.body
+        const prateleira = await Prateleira.findOne({codigo:codigoPrateleira})
+        for (let caixa of prateleira.caixas) {
+            if (caixa.codigo == codigo) {
+                throw new Error("Código Caixa já cadastrado!");
+            }
+            if (caixa.nome == nome) {
+                throw new Error("Nome Caixa já cadastrado!");
+            }
+        }
+        const novaCaixa = await Caixa.create({codigo, nome})
+        prateleira.caixas.push(novaCaixa)
+        await Prateleira.findOneAndUpdate({codigo:codigoPrateleira}, prateleira, {new:true})
+        const armario = await Armario.findOne({codigo:codigoArmario})
+        const novaListaPrateleiras = armario.prateleiras.filter((prat) => {
+            return prat.codigo != prateleira.codigo
+        })
+        novaListaPrateleiras.push(prateleira)
+        armario.prateleiras = novaListaPrateleiras
+        const novoArmario = await Armario.findOneAndUpdate({codigo:codigoArmario},armario, {new:true})
+        res.send(novoArmario)
+    } catch (error) {
+        console.log(error)
+        res.send({message:error.message})
+
+    }
+})
+
+
 router.post('/saida', async (req, res) => {
     console.log(req.body)
     const itemCadastro = req.body
@@ -89,7 +164,11 @@ router.get('/consulta', async (req, res) => {
 router.get('/pesquisa/:codigo', async (req, res) => {
     const { codigo } = req.params
     const produto = await Produto.findOne({codigo})
-    res.send(produto)
+    if (produto != null) {
+        res.send(produto)
+    } else {
+        res.send({message: 'Pesquisa não retornou itens'})
+    }
 })
 
 router.get('/gera/:codigo',async (req, res) => {
