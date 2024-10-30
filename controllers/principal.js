@@ -13,12 +13,13 @@ const QRCode = require('qrcode')
 
 router.post('/cadastro-movimentacao', async (req, res) => {
     const movimentacao = req.body
+    console.log(movimentacao)
     try {
         movimentacao.quantidade = Number(movimentacao.quantidade)
         await Movimentacao.findOneAndUpdate({codigo:movimentacao.codigo},movimentacao,{new:true, upsert: true})
-        let produtoEstoque = await Produto.findOne({codigo:movimentacao.codigo})
-        quantidadeAntesMovimentacao = produtoEstoque.quantidade
-        valorMedioAntesMovimentacao = produtoEstoque.valorMedio
+        let produtoEstoque = await Produto.findOne({codigo:movimentacao.codigo}) || {codigo:movimentacao.codigo}
+        quantidadeAntesMovimentacao = produtoEstoque.quantidade || 0
+        valorMedioAntesMovimentacao = produtoEstoque.valorMedio || 0
         if (movimentacao.tipo == 'entrada') {
             movimentacao.valorUnitario = Number(movimentacao.valorUnitario)
 
@@ -32,7 +33,12 @@ router.post('/cadastro-movimentacao', async (req, res) => {
 
             produtoEstoque.descricao = movimentacao.descricao
             produtoEstoque.equipamento = movimentacao.equipamento
-            produtoEstoque.localizacao = movimentacao.localizacao
+            produtoEstoque.localizacao = {
+                armario: movimentacao['select-armario'],
+                prateleira: movimentacao['select-prateleira'],
+                caixa: movimentacao['select-caixa'],
+            }
+            produtoEstoque.produto = movimentacao.produto
 
             const produtoAtualizado = await Produto.findOneAndUpdate({codigo: produtoEstoque.codigo}, produtoEstoque, {new:true, upsert: true})
             console.log(produtoAtualizado)

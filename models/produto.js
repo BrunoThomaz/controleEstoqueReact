@@ -26,7 +26,7 @@ const produtoSchema = new mongoose.Schema({
         required: false,
     },
     localizacao: {
-        type: String,
+        type: Object,
         required: false,
     },
     estoqueMinimo: {

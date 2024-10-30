@@ -61,34 +61,60 @@ async function buscaArmarios() {
     fetch('/busca-armarios')
     .then(res => res.json())
     .then(json => {
+        console.log(json);
         if (json != null) {
             GLOBAL_ARMARIOS = json;
-            const selectArmario = document.getElementById('select-armario')
-            selectArmario.innerHTML = '<option value="">Selecione o Armário</option>'
-            for (let armario of json) {
-                selectArmario.innerHTML += `<option value="${armario.codigo}">${armario.nome}</option>`
-                
+            const selectArmario = document.getElementById('select-armario');
+            if (selectArmario != null) {
+                selectArmario.innerHTML = '<option value="">Selecione o Armário</option>';
+                for (let armario of json) {
+                    selectArmario.innerHTML += `<option value="${armario.codigo}">${armario.nome}</option>`
+                    
+                }
             }
             const selectArmarioCaixa = document.getElementById('select-armario-caixa')
-            selectArmarioCaixa.innerHTML = '<option value="">Selecione o Armário</option>'
-            for (let armario of json) {
-                selectArmarioCaixa.innerHTML += `<option value="${armario.codigo}">${armario.nome}</option>`
-                
+            if (selectArmarioCaixa != null) {
+                selectArmarioCaixa.innerHTML = '<option value="">Selecione o Armário</option>'
+                for (let armario of json) {
+                    selectArmarioCaixa.innerHTML += `<option value="${armario.codigo}">${armario.nome}</option>`
+                    
+                }
             }
         }
     })
 }
 
 function atualizaPrateleiras(event) {
+    const codigoArmario = document.getElementById('select-armario-caixa').value;
     for (armario of GLOBAL_ARMARIOS) {
-        if (event.target.value == armario.codigo) {
-            const selectArmarioCaixa = document.getElementById('select-prateleira');
-            selectArmarioCaixa.innerHTML = '<option value="">Selecione a Prateleira</option>';
+        if (codigoArmario == armario.codigo) {
+            const selectPrateleira = document.getElementById('select-prateleira');
+            selectPrateleira.innerHTML = '<option value="">Selecione a Prateleira</option>';
             for (let prateleira of armario.prateleiras) {
-                selectArmarioCaixa.innerHTML += `<option value="${prateleira.codigo}">${prateleira.nome}</option>`;
-                
+                selectPrateleira.innerHTML += `<option value="${prateleira.codigo}">${prateleira.nome}</option>`;
             }
         }
     }
 }
+
+function atualizaCaixas(event) {
+    for (armario of GLOBAL_ARMARIOS) {
+        const codigoArmario = document.getElementById('select-armario-caixa').value;
+        const codigoPrateleira = document.getElementById('select-prateleira').value;
+        for (armario of GLOBAL_ARMARIOS) {
+            if (codigoArmario == armario.codigo) {
+                for (prateleira of armario.prateleiras) {
+                    if (codigoPrateleira == prateleira.codigo) {
+                        const selectCaixa = document.getElementById('select-caixa')
+                        selectCaixa.innerHTML = `<option value="">Selecione uma caixa</option>`
+                        for (caixa of prateleira.caixas) {
+                            selectCaixa.innerHTML += `<option value="${caixa.codigo}">${caixa.nome}</option>`
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 buscaArmarios();
