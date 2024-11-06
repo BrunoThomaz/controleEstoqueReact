@@ -1,16 +1,15 @@
 var GLOBAL_ARMARIOS = {}
 const modal = document.querySelector('.modal');
 
+const scanner = new Html5QrcodeScanner('reader',{
+    qrbox: {
+        width: 250,
+        height: 250,
+    },
+    fps: 20,
+});
 function escanearQR() {
-    console.log('escanearQR');
     modal.style.display = 'block';
-    const scanner = new Html5QrcodeScanner('reader',{
-        qrbox: {
-            width: 250,
-            height: 250,
-        },
-        fps: 20,
-    });
     scanner.render(
         (result)=>{
             codigo.value = result;
@@ -22,6 +21,13 @@ function escanearQR() {
         (error)=>{
             console.log(error);
         })
+    setTimeout(stopScanner,30000)
+}
+
+function stopScanner() {
+    scanner.clear();
+    modal.style.display = 'none';
+    alert('Código não encontrado, digite ou tente novamente.');
 }
 
 async function pesquisaCodigo() {

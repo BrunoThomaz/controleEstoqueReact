@@ -1,0 +1,657 @@
+[
+  {
+    "codigo": "16007661",
+    "produto": "FONE DE OUVIDO HEADSET S/FIO",
+    "valorUnitario": "310"
+  },
+  {
+    "codigo": "16009341",
+    "produto": "CAMISA POLO MASCULINA **NÃO USAR**",
+    "valorUnitario": "55"
+  },
+  {
+    "codigo": "16009342",
+    "produto": "CAMISA POLO MASCULINA",
+    "valorUnitario": "83"
+  },
+  {
+    "codigo": "16010000",
+    "produto": "MOCHILA CAMP 12L",
+    "valorUnitario": "335"
+  },
+  {
+    "codigo": "16010001",
+    "produto": "RELOGIO CHAMPION SPORT CA31426D",
+    "valorUnitario": "499"
+  },
+  {
+    "codigo": "16010002",
+    "produto": "T-SHIRT ALGODAO PERZONALIZADO G",
+    "valorUnitario": "33"
+  },
+  {
+    "codigo": "16010003",
+    "produto": "T-SHIRT ALGODAO PERZONALIZADO XG",
+    "valorUnitario": "38"
+  },
+  {
+    "codigo": "16010004",
+    "produto": "T-SHIRT ALGODAO PERZONALIZADO XXG",
+    "valorUnitario": "42"
+  },
+  {
+    "codigo": "16000524",
+    "produto": "OPTIPLEX 7070 SFF",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16000525", "produto": "LATITUDE 5400", "valorUnitario": "0" },
+  { "codigo": "16000527", "produto": "LATITUDE 5401", "valorUnitario": "0" },
+  {
+    "codigo": "16000528",
+    "produto": "MOCHILA DELL PRO 15",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16000529",
+    "produto": "MONITOR P2419H",
+    "valorUnitario": "837,27"
+  },
+  {
+    "codigo": "16000530",
+    "produto": "KIT - DELL SE-KM636",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16000531", "produto": "DELL TB16", "valorUnitario": "0" },
+  {
+    "codigo": "16000533",
+    "produto": "PRECISION 7820 TOWER",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16000534",
+    "produto": "KIT TECLADO E MOUSE",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002357",
+    "produto": "SMART-UPS X 3KVA, RACK 230V",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002358",
+    "produto": "SMART-UPS BR 3KVA, 220V",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002362",
+    "produto": "SMART-UPS SRT 6KVA 230V",
+    "valorUnitario": "25448,92"
+  },
+  {
+    "codigo": "16002363",
+    "produto": "NOBREAK CJ SMART-UPS APC/SRTRK2",
+    "valorUnitario": "1066,49"
+  },
+  {
+    "codigo": "16002365",
+    "produto": "SUP OCTOO 4 MONIT",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002366",
+    "produto": "SUP ARTIC 2 MONIT - MDA17",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002367",
+    "produto": "SUP ARTIC 2 MONIT - MDS19",
+    "valorUnitario": "2108,32"
+  },
+  { "codigo": "16002368", "produto": "INSPIRON 15 3583", "valorUnitario": "0" },
+  {
+    "codigo": "16002376",
+    "produto": "IP TELEFONE - 8058S POE",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002377",
+    "produto": "WEBCAM USB C/ MIC",
+    "valorUnitario": "799"
+  },
+  {
+    "codigo": "16002380",
+    "produto": "CAIXA DE SOM USB",
+    "valorUnitario": "114,1"
+  },
+  { "codigo": "16002381", "produto": "MICROFONE USB", "valorUnitario": "170" },
+  {
+    "codigo": "16002928",
+    "produto": "MOUSE COM FIO DELL",
+    "valorUnitario": "72,33"
+  },
+  {
+    "codigo": "16002930",
+    "produto": "TRIO 8800 CONF - PHONEPOLYCOM",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002931",
+    "produto": "TRIO VISUAL PRO-12X",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002932",
+    "produto": "TOUCH PAD - REAL PRESENCE",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002933",
+    "produto": "MEMORIA RAM 8GB DDR4 2666MHZ",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002934",
+    "produto": "PLAC VIDEO RADEON PRO WX 3100 4GB",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002935",
+    "produto": "SWITCH 3750G 48 10/100/1000T 4 SFP POE",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002936",
+    "produto": "SWITCH 3750G 48 10/100/1000T 4 SFP",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002937",
+    "produto": "SWITCH 3750G 24 10/100/1000T 4 SFP",
+    "valorUnitario": "2800"
+  },
+  {
+    "codigo": "16002938",
+    "produto": "SWITCH 3750G 12 SFP",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002939",
+    "produto": "SWITCH 3750X 48 10/100/1000 4SFP POE",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002940",
+    "produto": "GE SFP LC TRANSCEPTOR",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002941",
+    "produto": "STACK CABLE C3750X",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002942",
+    "produto": "CISCO ASR1001",
+    "valorUnitario": "24800"
+  },
+  {
+    "codigo": "16002943",
+    "produto": "CISCO 2901-HSEC/K11",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16002944", "produto": "CISCO 2901-V/K11", "valorUnitario": "0" },
+  { "codigo": "16002945", "produto": "CISCO PVDM3-66", "valorUnitario": "0" },
+  {
+    "codigo": "16002946",
+    "produto": "CISCO VWIC2-1MFT-T1/E3",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002947",
+    "produto": "TELEFONE ANALOGICO VG224 24PORT GW",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002948",
+    "produto": "CISCO WIRELESS CONTR 50AP",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002949",
+    "produto": "INTERFACE 8PORT GIGABITE",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002950",
+    "produto": "FIREWALL JUNIPER 320M-SH",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002951",
+    "produto": "PORTA RACK METAL - FRONTAL",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16002952",
+    "produto": "PORTA RACK METAL - TRASEIRA",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16003156",
+    "produto": "CARTUCHO TONER XEROX PT 106R03745",
+    "valorUnitario": "511"
+  },
+  {
+    "codigo": "16003157",
+    "produto": "CARTUCHO TONER XEROX  AMRL 106R03746",
+    "valorUnitario": "511,95"
+  },
+  {
+    "codigo": "16003158",
+    "produto": "CARTUCHO TONER XEROX MAGNT 106R03747",
+    "valorUnitario": "511,95"
+  },
+  {
+    "codigo": "16003159",
+    "produto": "CARTUCHO TONER XEROX  CIAN 106R03748",
+    "valorUnitario": "511,95"
+  },
+  {
+    "codigo": "16003160",
+    "produto": "CARTUCHO FUSOR XEROX C7025 115R00114",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16003161",
+    "produto": "CARTUCHO TONER  CIANO C6515",
+    "valorUnitario": "1330,34"
+  },
+  {
+    "codigo": "16003162",
+    "produto": "CARTUCHO TONER  MAGENTA C6515",
+    "valorUnitario": "1174,8"
+  },
+  {
+    "codigo": "16003163",
+    "produto": "CARTUCHO TONER  AMARELO C6515",
+    "valorUnitario": "1174,8"
+  },
+  {
+    "codigo": "16003164",
+    "produto": "TONER PRETO WC 6515",
+    "valorUnitario": "1313,4"
+  },
+  {
+    "codigo": "16003165",
+    "produto": "CARTUCHO FUSOR PRETO C6515",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16003356", "produto": "MOUSE USB C/ FIO", "valorUnitario": "0" },
+  {
+    "codigo": "16003357",
+    "produto": "TECLADO USB C/ FIO",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16003358", "produto": "MOUSE S/ FIO", "valorUnitario": "62,35" },
+  {
+    "codigo": "16003359",
+    "produto": "TECLADO S/ FIO",
+    "valorUnitario": "240,7"
+  },
+  {
+    "codigo": "16003651",
+    "produto": "UNIDADE DE IMAGEM -COPIADORA XEROX C7020",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16004127",
+    "produto": "SOFTWARE - ACRONIS TRUE IMAGE",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16004128",
+    "produto": "SOFTWARE - P7S SIGNER",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16004129",
+    "produto": "SOFTWARE - CAMTASIA 219",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16004165",
+    "produto": "WEBCAM LOGITECH - C930E BUSINESS",
+    "valorUnitario": "967"
+  },
+  {
+    "codigo": "16004166",
+    "produto": "CABO EXTENSOR AMPLIFICADO USB 3.0 - 5M",
+    "valorUnitario": "1119,8"
+  },
+  {
+    "codigo": "16005686",
+    "produto": "PATCH CORD CAT6 - 1,5M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005687",
+    "produto": "PATCH CORD CAT6A - 1,5M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005688",
+    "produto": "PATCH CORD CAT6 - 2M",
+    "valorUnitario": "32,67"
+  },
+  {
+    "codigo": "16005689",
+    "produto": "PATCH CORD CAT6A - 2M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005690",
+    "produto": "PATCH CORD CAT6 - 5M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005691",
+    "produto": "PATCH CORD CAT6A - 5M",
+    "valorUnitario": "75,2"
+  },
+  {
+    "codigo": "16005692",
+    "produto": "PATCH CORD CAT6- 10M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005693",
+    "produto": "PATCH CORD CAT6A - 10M",
+    "valorUnitario": "59"
+  },
+  {
+    "codigo": "16005694",
+    "produto": "PATCH CORD CAT6- 20M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005695",
+    "produto": "PATCH CORD CAT6A- 20M",
+    "valorUnitario": "120"
+  },
+  {
+    "codigo": "16005696",
+    "produto": "CONECTOR RJ 45 MACHO CAT6",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005697",
+    "produto": "CONECTOR RJ 45 MACHO CAT6A",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005698",
+    "produto": "CONECTOR RJ 45 MACHO CAT6 BLINDADO",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005699",
+    "produto": "CONECTOR RJ 45 MACHO CAT6A BLINDADO",
+    "valorUnitario": "288,8"
+  },
+  {
+    "codigo": "16005700",
+    "produto": "CONECTOR RJ 45 FEMEA CAT6",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005701",
+    "produto": "CONECTOR RJ 45 FEMEA CAT6A",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005702",
+    "produto": "CONECTOR RJ 45 FEMEA CAT6 BLINDADO",
+    "valorUnitario": "117,5"
+  },
+  {
+    "codigo": "16005703",
+    "produto": "CONECTOR RJ 45 FEMEA CAT6A BLINDADO",
+    "valorUnitario": "190,09"
+  },
+  {
+    "codigo": "16005704",
+    "produto": "CAIXA DE SOBREPOR PARA CONECTOR CAT6",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16005705",
+    "produto": "CAIXA DE SOBREPOR PARA CONECTOR CAT6A",
+    "valorUnitario": "101,23"
+  },
+  {
+    "codigo": "16005706",
+    "produto": "CONECTOR DIN  DRM45 CAT6",
+    "valorUnitario": "5,9"
+  },
+  {
+    "codigo": "16005707",
+    "produto": "SERVIRDOR POWEREDGE DELL R340",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16005708", "produto": "FITA VELCRO", "valorUnitario": "135" },
+  { "codigo": "16005709", "produto": "CABO UTP CAT6", "valorUnitario": "3,99" },
+  { "codigo": "16005710", "produto": "CABO UTP CAT6A", "valorUnitario": "0" },
+  {
+    "codigo": "16005711",
+    "produto": "CABO STP CAT6",
+    "valorUnitario": "38,99"
+  },
+  { "codigo": "16005712", "produto": "CABO STP CAT6A", "valorUnitario": "0" },
+  {
+    "codigo": "16006133",
+    "produto": "CONVERSOR - VGA x HDMI",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16006134",
+    "produto": "CONVERSOR - DISPLAY PORT x HDMI",
+    "valorUnitario": "144,95"
+  },
+  {
+    "codigo": "16006135",
+    "produto": "CABO HDMI -1MACHOx1MACHO -20 METROS",
+    "valorUnitario": "104"
+  },
+  {
+    "codigo": "16006136",
+    "produto": "CABO HDMI -1MACHOx1MACHO -10 METROS",
+    "valorUnitario": "44,72"
+  },
+  {
+    "codigo": "16006194",
+    "produto": "APC9631 - PL. MONIT.",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16006195",
+    "produto": "POWER CORD, NBR 14136 - IEC C19, 1.8M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16006400",
+    "produto": "SOFTWARE - FOXIT PHANTOM PDF PRO",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16006990",
+    "produto": "CABO VGA -1FEMEAx1FEMEA -10METROS",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16006991",
+    "produto": "CABO USB -2MACHOx2FEMEA -10METROS",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008123",
+    "produto": "ENCODER MODELO 9000",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008124",
+    "produto": "NVR-AS MODELO 4000 COMPACTO",
+    "valorUnitario": "21291"
+  },
+  {
+    "codigo": "16008125",
+    "produto": "CAMERA CFTV - MODELO EE-BG4SV21",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008126",
+    "produto": "LENTE DE CAMERA - EE-L3M2812DR",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008127",
+    "produto": "SUPORTE MOVEL PARA TV",
+    "valorUnitario": "89,99"
+  },
+  {
+    "codigo": "16008128",
+    "produto": "FORTIGATE MODELO 401E",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008129",
+    "produto": "FORTIGATE MODELO 401E BDL-950-36",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008130",
+    "produto": "CABO HDMI 15M MACHO X MACHO",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008131",
+    "produto": "MATRIX HDMI 4X4 - FX 400-E",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16008132", "produto": "CABO HDMI 1.5 M", "valorUnitario": "0" },
+  {
+    "codigo": "16008134",
+    "produto": "SUPORTE FIXO PARA TV",
+    "valorUnitario": "429,9"
+  },
+  {
+    "codigo": "16008138",
+    "produto": "CONVERSOR HDMI UPT",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16008630", "produto": "CENTRAL IR", "valorUnitario": "0" },
+  {
+    "codigo": "16008631",
+    "produto": "CABO REPETIDOR IR",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16008632", "produto": "CABO EMISSOR IR", "valorUnitario": "0" },
+  {
+    "codigo": "16008889",
+    "produto": "ORGANIZADOR DE CABOS 1U",
+    "valorUnitario": "42,5"
+  },
+  {
+    "codigo": "16008890",
+    "produto": "\"SUPORTE ADAPTADOR SSD 2.5\"\" PARA 3.5\"\"\"",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008891",
+    "produto": "ADAPTADOR HDMI F X F",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008892",
+    "produto": "PATCH PANEL CAT5 24 PORTAS",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008893",
+    "produto": "PATCH PANEL CAT5 48 PORTAS",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008894",
+    "produto": "PATCH PANEL CAT6 24 PORTAS",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008895",
+    "produto": "PATCH PANEL CAT6 48 PORTAS",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008896",
+    "produto": "FONTE CARREGADOR DOCK STATION",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008898",
+    "produto": "FONTE CARREGADOR DOCK STATION",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008901",
+    "produto": "FONTE CARREGADOR LAPTOP",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16008928", "produto": "HD SSD 1TB", "valorUnitario": "0" },
+  {
+    "codigo": "16008977",
+    "produto": "LINE CORD FIBRA OTICA 2M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008978",
+    "produto": "PATCH CORD CAT 5E 1.5M",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008979",
+    "produto": "FONTE CARREGADOR LAPTOP 45W",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008980",
+    "produto": "FONTE CARREGADOR LAPTOP 65W",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008981",
+    "produto": "FONTE CARREGADOR LAPTOP 90W",
+    "valorUnitario": "0"
+  },
+  {
+    "codigo": "16008982",
+    "produto": "FONTE CARREGADOR LAPTOP 130W",
+    "valorUnitario": "0"
+  },
+  { "codigo": "16008983", "produto": "SIMCARD", "valorUnitario": "0" },
+  { "codigo": "16009570", "produto": "CABO DVI", "valorUnitario": "0" },
+  { "codigo": "16009571", "produto": "HD EXTERNO", "valorUnitario": "0" },
+  {
+    "codigo": "16009577",
+    "produto": "FILTRO DE LINHA 10A",
+    "valorUnitario": "53,7"
+  },
+  {
+    "codigo": "16009615",
+    "produto": "HEADSET PC / USB",
+    "valorUnitario": "348,8"
+  },
+  {
+    "codigo": "16009759",
+    "produto": "\"TV LCD/LED 32\"\"\"",
+    "valorUnitario": "1792,33"
+  }
+]

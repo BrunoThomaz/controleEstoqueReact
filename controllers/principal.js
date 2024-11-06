@@ -44,8 +44,9 @@ router.post('/cadastro-movimentacao', async (req, res) => {
             console.log(produtoAtualizado)
         } else if (movimentacao.tipo == 'saida') {
             produtoEstoque.quantidade =  quantidadeAntesMovimentacao - movimentacao.quantidade
-            if (produtoEstoque < 0) {
-                return 'Erro na quantidade'
+            if (produtoEstoque.quantidade < 0) {
+                throw new Error(`Erro na quantidade somente ${quantidadeAntesMovimentacao} em estoque`);
+                 
             }
             const produtoAtualizado = await Produto.findOneAndUpdate({codigo: produtoEstoque.codigo}, produtoEstoque, {new:true, upsert: true})
             console.log(produtoAtualizado)
@@ -53,7 +54,7 @@ router.post('/cadastro-movimentacao', async (req, res) => {
         res.redirect(`/${movimentacao.tipo}.html?response="Estoque atualizado com sucesso. Código: ${movimentacao.codigo}"`)
     } catch (error) {
         console.log(error);
-        res.redirect(`/${movimentacao.tipo}.html?response="Erro Interno contate o administrador`)
+        res.redirect(`/${movimentacao.tipo}.html?response=${error.message}`)
     }
 })
 router.post('/atualizaEstoque', async (req, res) => {
@@ -85,7 +86,6 @@ router.get('/busca-armarios', async (req, res) => {
     const armarios = await Armario.find()
     res.send(armarios)
 })
-
 router.post('/cadastro-prateleira', async (req, res) => {
     try {
         console.log(req.body)
@@ -109,7 +109,6 @@ router.post('/cadastro-prateleira', async (req, res) => {
         res.send({message:error.message})
     }
 })
-
 router.post('/cadastro-caixa', async (req, res) => {
     try {
         const { nome, codigo, codigoPrateleira, codigoArmario } = req.body
@@ -139,8 +138,6 @@ router.post('/cadastro-caixa', async (req, res) => {
 
     }
 })
-
-
 router.post('/saida', async (req, res) => {
     console.log(req.body)
     const itemCadastro = req.body
@@ -157,15 +154,23 @@ router.post('/saida', async (req, res) => {
     })
     res.redirect(`/saida.html?response="Estoque atualizado com sucesso. Nova saída gerada, código: ${novaSaida._id}"`)
 })
-
 router.get('/saida', async (req, res) => {
     const historicoSaida = await Saida.find()
     res.send(historicoSaida)
 })
-
 router.get('/consulta', async (req, res) => {
     const produto = await Produto.find()
     res.send(produto)
+})
+router.get('/consulta/armarios', async (req, res) => {
+    const armarios = await Armario.find()
+    res.send(armarios)
+})
+router.get('/consulta/armario/:codigoArmario', async (req, res) => {
+    const { codigoArmario } = req.params
+    const resultados = await Produto.find({ 'localizacao.armario': codigoArmario }).sort({valorUnitario:-1})
+    console.log(resultados)
+    res.send(resultados)
 })
 router.get('/pesquisa/:codigo', async (req, res) => {
     const { codigo } = req.params
@@ -173,10 +178,9 @@ router.get('/pesquisa/:codigo', async (req, res) => {
     if (produto != null) {
         res.send(produto)
     } else {
-        res.send({message: 'Pesquisa não retornou itens'})
+        res.send({message: 'Código não cadastrado, cadastre um novo produto com este código'})
     }
 })
-
 router.get('/gera/:codigo',async (req, res) => {
     try {
         const { codigo } = req.params
@@ -186,7 +190,8 @@ router.get('/gera/:codigo',async (req, res) => {
         console.error('Error generating QR code:', err);
         res.status(500).send('Internal Server Error');
     }
-});
+})
+
 
 
 module.exports = (app) => {

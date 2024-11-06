@@ -55,7 +55,7 @@
         </fieldset>
         <fieldset>
             <label for="valorUnitario">Valor Unitário</label>
-            <input type="number" name="valorUnitario" id="valorUnitario" required>
+            <input type="number" step=".01" name="valorUnitario" id="valorUnitario" required>
         </fieldset>
         <fieldset>
             <label for="quantidade">Quantidade</label>
@@ -70,6 +70,7 @@
     </form>
     <div class="modal">
         <div id="reader"></div>
+        <button onclick="stopScanner()">Fechar Scanner</button>
     </div>
 </body>
 </html>

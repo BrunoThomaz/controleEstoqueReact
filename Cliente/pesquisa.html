@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <script src="./html5-qrcode/html5-qrcode.min.js"></script>
-    <script src=".js/main.js" defer></script>
+    <script src="./js/main.js" defer></script>
     
     <title>Controle de Estoque - Pesquisa</title>
 </head>
@@ -21,7 +21,7 @@
         <h2>Pesquisa de Produto</h2>
         <fieldset>
             <label for="codigo">Código</label>
-            <input type="text" name="codigo" id="codigo">
+            <input type="text" name="codigo" id="codigo" onchange="pesquisaCodigoPesquisa()">
             <a href="#" onclick="escanearQR()">Usar Câmera</a>
         </fieldset>
     </form>
@@ -32,39 +32,15 @@
         <div id="reader"></div>
     </div>
     <script>
-        function escanearQR() {
-            console.log('escanearQR');
-            const modal = document.querySelector('.modal');
-            modal.style.display = 'block';
-            const scanner = new Html5QrcodeScanner('reader',{
-                qrbox: {
-                    width: 250,
-                    height: 250,
-                },
-                fps: 20,
-            });
-            scanner.render(
-                (result)=>{
-                    const codigo = document.getElementById('codigo');
-                    codigo.value = result;
-                    codigo.dispatchEvent(new Event('change'));
-                    scanner.clear();
-                    modal.style.display = 'none';
-                }, 
-                
-                (error)=>{
-                    console.log(error);
-                })
-            
-        }
-        const codigo = document.getElementById('codigo')
-        codigo.addEventListener('change', pesquisaCodigo)
-        async function pesquisaCodigo() {
+        async function pesquisaCodigoPesquisa() {
             const resultado = document.getElementById('resultado')
             valorCodigo = codigo.value
             fetch(`/pesquisa/${valorCodigo}`)
             .then((result) => result.json())
             .then((produto) => {
+                if (produto.message) {
+                    return alert(produto.message)
+                }
                 resultado.innerHTML='Pesquisando Produto...'
                 let p = document.createElement('p')
                 p.innerHTML += `Cógido: ${produto.codigo}\n
@@ -73,6 +49,9 @@
                 Equipamento: ${produto.equipamento}</br>`
                 resultado.innerHTML = ''
                 resultado.appendChild(p)
+            })
+            .catch((error)=>{
+                console.log(error);
             })
         }
     </script>

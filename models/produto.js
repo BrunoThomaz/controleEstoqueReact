@@ -11,27 +11,28 @@ const produtoSchema = new mongoose.Schema({
     },
     quantidade: {
         type: Number,
-        required: false,
+        required: true,
     },
     equipamento: {
         type: String,
-        required: false,
+        required: true,
     },
     valorMedio: {
         type: Number,
-        required: false,
+        required: true,
     },
     descricao: {
         type: String,
-        required: false,
+        required: true,
     },
     localizacao: {
         type: Object,
-        required: false,
+        required: true,
     },
     estoqueMinimo: {
         type: Number,
-        required: false,
+        required: true,
+        default: 0
     }
 });
 
