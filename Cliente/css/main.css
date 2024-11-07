@@ -10,6 +10,51 @@ body {
   color: #333;
   margin: 0;
 }
+body header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+body header h1 {
+  margin: 0;
+}
+body .back-button {
+  background-color: #fff;
+  color: #007bff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+body .back-button:hover {
+  background-color: #e0e0e0;
+}
+body .table-container {
+  margin-top: 20px;
+}
+body .table-container h2 {
+  color: #333;
+  margin-top: 20px;
+}
+body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+body th, body td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+body th {
+  background-color: #007bff;
+  color: #fff;
+}
 body form {
   display: flex;
   flex-direction: column;
@@ -122,7 +167,7 @@ nav a:hover {
 
 h1 {
   text-align: center;
-  color: #007bff;
+  color: #333;
   margin-top: 20px;
 }
 

@@ -25,6 +25,10 @@ const movimentacaoSchema = new mongoose.Schema({
     valorUnitario: {
         type: Number,
         required: true
+    },
+    produto: {
+        type: String,
+        required: true
     }
 });
 

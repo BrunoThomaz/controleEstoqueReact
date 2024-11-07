@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movimentações de Estoque</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+        }
+        .back-button {
+            background-color: #fff;
+            color: #007bff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #e0e0e0;
+        }
+        .table-container {
+            margin-top: 20px;
+        }
+        .table-container h2 {
+            color: #333;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Movimentações de Estoque</h1>
+    <a href="index.html" class="back-button">Voltar para Página Inicial</a>
+</header>
+
+<div id="table-container" class="table-container">
+    <!-- As tabelas dinâmicas serão inseridas aqui -->
+</div>
+
+<script>
+    var MOVIMENTACAO = []
+    async function consultaMovimentacao() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const codigo = urlParams.get('codigo');
+        MOVIMENTACAO = await fetch(`/consulta-movimentacao`).then(res => res.json()).then(json => json);
+        // Inicializar a tabela ao carregar a página
+        inicializarTabela();
+    }
+    consultaMovimentacao();
+    // Função para formatar a data e hora local
+    function formatarDataHora(dataISO) {
+        const data = new Date(dataISO);
+        return data.toLocaleString('pt-BR', {
+            dateStyle: 'short',
+            timeStyle: 'short'
+        });
+    }
+
+    // Função para separar movimentações por tipo
+    function separarMovimentacoesPorTipo(movimentacoes) {
+        const agrupadas = {
+            entrada: [],
+            saida: []
+        };
+
+        movimentacoes.forEach(item => {
+            if (item.tipo === 'entrada') {
+                agrupadas.entrada.push(item);
+            } else if (item.tipo === 'saida') {
+                agrupadas.saida.push(item);
+            }
+        });
+
+        return agrupadas;
+    }
+
+    // Função para criar uma tabela de movimentações
+    function criarTabelaMovimentacoes(tipo, itens) {
+        const container = document.getElementById('table-container');
+
+        const titulo = document.createElement('h2');
+        titulo.textContent = `Movimentações de ${tipo === 'entrada' ? 'Entrada' : 'Saída'}`;
+        container.appendChild(titulo);
+
+        const table = document.createElement('table');
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+
+        thead.innerHTML = `
+            <tr>
+                <th>Código</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Data e Hora</th>
+            </tr>
+        `;
+
+        itens.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.codigo}</td>
+                <td>${item.produto}</td>
+                <td>${item.quantidade}</td>
+                <td>${formatarDataHora(item.data)}</td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        container.appendChild(table);
+    }
+
+    // Função para inicializar a tela com tabelas separadas por tipo
+    function inicializarTabela() {
+        const agrupadas = separarMovimentacoesPorTipo(MOVIMENTACAO);
+        criarTabelaMovimentacoes('entrada', agrupadas.entrada);
+        criarTabelaMovimentacoes('saida', agrupadas.saida);
+    }
+</script>
+
+</body>
+</html>

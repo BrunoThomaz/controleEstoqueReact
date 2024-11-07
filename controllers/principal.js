@@ -13,15 +13,14 @@ const QRCode = require('qrcode')
 
 router.post('/cadastro-movimentacao', async (req, res) => {
     const movimentacao = req.body
-    console.log(movimentacao)
     try {
         movimentacao.quantidade = Number(movimentacao.quantidade)
-        await Movimentacao.findOneAndUpdate({codigo:movimentacao.codigo},movimentacao,{new:true, upsert: true})
         let produtoEstoque = await Produto.findOne({codigo:movimentacao.codigo}) || {codigo:movimentacao.codigo}
         quantidadeAntesMovimentacao = produtoEstoque.quantidade || 0
         valorMedioAntesMovimentacao = produtoEstoque.valorMedio || 0
+        movimentacao.valorUnitario = Number(movimentacao.valorUnitario)
         if (movimentacao.tipo == 'entrada') {
-            movimentacao.valorUnitario = Number(movimentacao.valorUnitario)
+            await Movimentacao.create(movimentacao)
 
             //Atualiza Quantidade
             quantidadeDepoisMovimentacao = quantidadeAntesMovimentacao + movimentacao.quantidade
@@ -43,13 +42,15 @@ router.post('/cadastro-movimentacao', async (req, res) => {
             const produtoAtualizado = await Produto.findOneAndUpdate({codigo: produtoEstoque.codigo}, produtoEstoque, {new:true, upsert: true})
             console.log(produtoAtualizado)
         } else if (movimentacao.tipo == 'saida') {
+            movimentacao.valorUnitario = 0
             produtoEstoque.quantidade =  quantidadeAntesMovimentacao - movimentacao.quantidade
             if (produtoEstoque.quantidade < 0) {
                 throw new Error(`Erro na quantidade somente ${quantidadeAntesMovimentacao} em estoque`);
-                 
+                
+            } else {
+                await Movimentacao.create(movimentacao)
+                await Produto.findOneAndUpdate({codigo: produtoEstoque.codigo}, produtoEstoque, {new:true, upsert: true})
             }
-            const produtoAtualizado = await Produto.findOneAndUpdate({codigo: produtoEstoque.codigo}, produtoEstoque, {new:true, upsert: true})
-            console.log(produtoAtualizado)
         }
         res.redirect(`/${movimentacao.tipo}.html?response="Estoque atualizado com sucesso. Código: ${movimentacao.codigo}"`)
     } catch (error) {
