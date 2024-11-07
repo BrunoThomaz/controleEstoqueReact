@@ -57,6 +57,10 @@ router.post('/cadastro-movimentacao', async (req, res) => {
         res.redirect(`/${movimentacao.tipo}.html?response=${error.message}`)
     }
 })
+router.get('/consulta-movimentacao', async (req, res) => {
+    const movimento = await Movimentacao.find()
+    res.send(movimento)
+})
 router.post('/atualizaEstoque', async (req, res) => {
     try {
         let itemCadastro = req.body
@@ -137,10 +141,6 @@ router.post('/cadastro-caixa', async (req, res) => {
         res.send({message:error.message})
 
     }
-})
-router.get('/saida', async (req, res) => {
-    const historicoSaida = await Saida.find()
-    res.send(historicoSaida)
 })
 router.get('/consulta', async (req, res) => {
     const produto = await Produto.find()
