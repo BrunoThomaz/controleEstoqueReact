@@ -138,22 +138,6 @@ router.post('/cadastro-caixa', async (req, res) => {
 
     }
 })
-router.post('/saida', async (req, res) => {
-    console.log(req.body)
-    const itemCadastro = req.body
-    let item = await Produto.findOne({codigo:req.body.codigo})
-    const novaQuantidade = item.quantidade - req.body.quantidade
-    item = await Produto.findOneAndUpdate({codigo:req.body.codigo},{quantidade:novaQuantidade},{new:true})
-
-    
-    const novaSaida = await Saida.create({
-        codigo: item.codigo,
-        produto: item.produto,
-        quantidade: req.body.quantidade,
-        usuario: 'Usuário Desconhecido'
-    })
-    res.redirect(`/saida.html?response="Estoque atualizado com sucesso. Nova saída gerada, código: ${novaSaida._id}"`)
-})
 router.get('/saida', async (req, res) => {
     const historicoSaida = await Saida.find()
     res.send(historicoSaida)
